@@ -1,0 +1,99 @@
+[2024-09-12 18:00:26] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-12 18:01:40] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 14:54:53] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 15:37:10] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 15:47:46] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 15:53:41] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 15:53:47] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 15:54:10] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 15:55:36] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 15:55:48] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 15:55:57] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 15:56:09] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:01:26] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:04:54] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:05:30] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 16:06:45] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:08:10] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:12:11] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:12:26] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:14:28] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:25:04] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 16:33:02] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 17:14:02] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 17:14:11] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 17:22:58] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 227) Error 42000 executing statement: 
+Array
+(
+    [0] => 42000
+    [1] => 1064
+    [2] => You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '0 ORDER BY `modResource`.`pagetitle` ASC LIMIT 20' at line 1
+)
+
+[2024-09-13 17:48:20] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 17:48:30] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 17:48:46] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-13 17:49:13] (ERROR @ D:\Projects\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL

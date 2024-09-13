@@ -1,0 +1,43 @@
+@import "https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css";
+
+@font-face {
+	font-family: "Open Runde";
+	font-weight: normal;
+	src: url(/assets/fonts/openrunde-regular.woff) format("woff");
+}
+
+@font-face {
+	font-family: "Unageo";
+	font-weight: bold;
+	src: url(/assets/fonts/unageo-bold.ttf) format("ttf");
+}
+
+@font-face {
+	font-family: "Unageo";
+	font-weight: 500;
+	src: url(/assets/fonts/unageo-semibold.otf) format("ttf");
+}
+
+body {
+	font-family: "Open Runde";
+	line-height: 1.4em;
+	font-size: clamp(16px, 3vw, 18px);
+
+	& h1 {
+		line-height: 1.2em;
+		font-size: clamp(32px, 3.5vw, 96px);
+		font-family: "Unageo", sans-serif;
+	}
+
+	& h2 {
+		line-height: 1.4em;
+		font-size: clamp(24px, 3vw, 48px);
+		font-family: "Unageo", sans-serif;
+	}
+
+	& h3 {
+		line-height: 1.4em;
+		font-size: clamp(18px, 3vw, 24px);
+		font-family: "Unageo";
+	}
+}

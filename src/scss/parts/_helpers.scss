@@ -1,0 +1,95 @@
+body {
+	color: $text;
+
+	& .margin-bottom {
+		margin-bottom: 20px;
+	}
+
+	& .bttn {
+		font-family: "Unageo";
+		font-weight: bold;
+		padding: 0 1.2em;
+		line-height: 2em;
+		display: inline-block;
+		color: #fff;
+		background-color: $primary;
+		border-radius: $border-radius;
+		transition: background-color 0.2s;
+
+		&:hover {
+			background-color: darken($primary, 5);
+		}
+	}
+
+	& .label {
+		display: inline-block;
+		line-height: 1.4em;
+		padding: 0 0.7em;
+		border-radius: 2em;
+		color: #fff;
+		background-color: $primary;
+
+		& i {
+			margin-right: 4px;
+		}
+	}
+
+	& .tag {
+		font-size: 14px;
+		line-height: 1.6em;
+		padding: 0 10px;
+		border-radius: 20px;
+		display: inline-block;
+		background-color: #ffe8c3;
+		color: $text;
+	}
+
+	& .news-card {
+		background-color: #fff;
+		border-radius: $border-radius;
+		overflow: hidden;
+
+		& .news-card-image {
+			display: block;
+			width: 100%;
+			aspect-ratio: 1 / 1;
+			background-size: cover;
+			padding: $gutter-width;
+			box-sizing: border-box;
+			position: relative;
+		}
+
+		& .news-card-title {
+			padding: clamp(10px, 1vw, 20px);
+			padding-bottom: 5px;
+		}
+
+		& .news-card-footer {
+			display: flex;
+			justify-content: space-between;
+			padding: clamp(10px, 1vw, 20px);
+			padding-top: 5px;
+			color: $fogged;
+		}
+	}
+
+	& .swiper-pagination {
+		margin-top: 2vmax;
+		text-align: center;
+
+		& .swiper-pagination-bullet {
+			display: inline-block;
+			width: 20px;
+			aspect-ratio: 1 / 1;
+			border-radius: 50%;
+			margin: 0 2px;
+			background-color: rgba($secondary, 0.4);
+			border: 4px solid #ffede5;
+			cursor: pointer;
+
+			&-active {
+				background-color: $secondary;
+			}
+		}
+	}
+}

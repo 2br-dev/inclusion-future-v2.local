@@ -1,0 +1,113 @@
+body section {
+    padding: 4vmax 0;
+}
+
+body section#hero img.logo {
+    width: clamp(140px, 25vw, 300px);
+    margin-bottom: 3vmax;
+}
+
+body section#inclusion-future {
+    background-color: #f2ffe6;
+}
+
+body section#inclusion-future li {
+    display: flex;
+}
+
+body section#inclusion-future li p {
+    margin-top: 0;
+}
+
+body section#inclusion-future li i {
+    margin-right: 10px;
+}
+
+body section#purposes h2 {
+    margin-top: 0;
+    font-size: clamp(32px, 3vw, 64px);
+}
+
+body section#purposes .col {
+    padding: 0 clamp(6px, 3vw, 40px);
+}
+
+body section#news {
+    background-color: #ffede5;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+body section#news .news-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1vmax;
+    border-bottom: 1px solid #cfcfcf;
+}
+
+@media (max-width: 460px) {
+    body section#news .news-header {
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 20px;
+    }
+
+    body section#news .news-header .bttn {
+        margin-top: 10px;
+    }
+}
+
+body section#news h2 {
+    margin: 0;
+}
+
+body section#news .news-content {
+    position: relative;
+}
+
+body section#news .news-content .swiper {
+    padding: 40px 18px;
+    box-sizing: border-box;
+    width: calc(100% + 36px);
+    margin-left: -18px;
+}
+
+body section#news .news-content .prev, body section#news .news-content .next {
+    position: absolute;
+    width: 60px;
+    aspect-ratio: 1 / 1;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+    top: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+@media (max-width: 850px) {
+    body section#news .news-content .prev, body section#news .news-content .next {
+        display: none;
+    }
+}
+
+body section#news .news-content .next {
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+body section#partners .swiper-slide {
+    text-align: center;
+}
+
+footer {
+    background-color: #3469e6;
+    padding: 4vmax 0;
+    color: #fff;
+}
+
+footer a {
+    color: #fff;
+}

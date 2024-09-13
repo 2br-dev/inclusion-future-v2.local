@@ -1,0 +1,11 @@
+
+### Создание/обновление поста
+POST http://inclusion.local/api/save.php
+Content-Type: 'application/json
+
+{
+	"pagetitle": "Новый документ",
+	"introtext": "Некоторое пространное описание нового документа",
+	"content": "<p>Контент документа</p>",
+	"cover": "https://picusm.photos/1980/1080"
+}

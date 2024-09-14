@@ -1,3 +1,7 @@
 node_modules
 post-editor/node_modules
 release/core/cache
+release/config.core.php
+release/core/config/config.inc.php
+release/manager/config.core.php
+release/connectors/config.core.php

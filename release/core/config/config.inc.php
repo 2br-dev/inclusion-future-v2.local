@@ -4,8 +4,8 @@
  */
 $database_type = 'mysql';
 $database_server = 'localhost';
-$database_user = 'inclusion_bd';
-$database_password = '!_InclusionBD#2024';
+$database_user = 'inclusion_db';
+$database_password = '!_InclusionDB#2024';
 $database_connection_charset = 'utf8';
 $dbase = 'inclusion';
 $table_prefix = 'modx_';
@@ -15,35 +15,35 @@ $config_options = array (
 $driver_options = array (
 );
 
-$lastInstallTime = 1725635352;
+$lastInstallTime = 1726301108;
 
-$site_id = 'modx66db1b184a5b52.67944749';
-$site_sessionname = 'SN66db19cb985bd';
+$site_id = 'modx66e543b456a666.90190508';
+$site_sessionname = 'SN66e5424529eb3';
 $https_port = '443';
-$uuid = '4202261b-599b-424c-9be1-9a7f37a1f7a4';
+$uuid = '094d37de-169c-4bc7-8671-7ae9286ab07d';
 
 if (!defined('MODX_CORE_PATH')) {
-    $modx_core_path= 'D:\Projects\Hosts\inclusion-future-v2.local\release/core/';
+    $modx_core_path= 'G:/Hosts/inclusion-future-v2.local/release/core/';
     define('MODX_CORE_PATH', $modx_core_path);
 }
 if (!defined('MODX_PROCESSORS_PATH')) {
-    $modx_processors_path= 'D:\Projects\Hosts\inclusion-future-v2.local\release/core/src/Revolution/Processors/';
+    $modx_processors_path= 'G:/Hosts/inclusion-future-v2.local/release/core/src/Revolution/Processors/';
     define('MODX_PROCESSORS_PATH', $modx_processors_path);
 }
 if (!defined('MODX_CONNECTORS_PATH')) {
-    $modx_connectors_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/connectors/';
+    $modx_connectors_path= 'G:/Hosts/inclusion-future-v2.local/release/connectors/';
     $modx_connectors_url= '/connectors/';
     define('MODX_CONNECTORS_PATH', $modx_connectors_path);
     define('MODX_CONNECTORS_URL', $modx_connectors_url);
 }
 if (!defined('MODX_MANAGER_PATH')) {
-    $modx_manager_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/manager/';
+    $modx_manager_path= 'G:/Hosts/inclusion-future-v2.local/release/manager/';
     $modx_manager_url= '/manager/';
     define('MODX_MANAGER_PATH', $modx_manager_path);
     define('MODX_MANAGER_URL', $modx_manager_url);
 }
 if (!defined('MODX_BASE_PATH')) {
-    $modx_base_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/';
+    $modx_base_path= 'G:/Hosts/inclusion-future-v2.local/release/';
     $modx_base_url= '/';
     define('MODX_BASE_PATH', $modx_base_path);
     define('MODX_BASE_URL', $modx_base_url);
@@ -73,7 +73,7 @@ if (!defined('MODX_SITE_URL')) {
     define('MODX_SITE_URL', $site_url);
 }
 if (!defined('MODX_ASSETS_PATH')) {
-    $modx_assets_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/assets/';
+    $modx_assets_path= 'G:/Hosts/inclusion-future-v2.local/release/assets/';
     $modx_assets_url= '/assets/';
     define('MODX_ASSETS_PATH', $modx_assets_path);
     define('MODX_ASSETS_URL', $modx_assets_url);

@@ -15,7 +15,7 @@ try{
 	], JSON_UNESCAPED_UNICODE);
 }catch(PDOException $ex){
 	echo json_encode([
-		"message" => $ex->message,
+		"message" => $ex->getMessage(),
 		"errors" => true
 	]);
 }

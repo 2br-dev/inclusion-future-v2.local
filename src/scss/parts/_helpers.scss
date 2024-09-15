@@ -5,6 +5,17 @@ body {
 		margin-bottom: 20px;
 	}
 
+	& .logo {
+		display: flex;
+		align-items: flex-end;
+		font-family: "Unageo";
+		font-weight: bold;
+
+		& img {
+			margin-right: 12px;
+		}
+	}
+
 	& .bttn {
 		font-family: "Unageo";
 		font-weight: bold;

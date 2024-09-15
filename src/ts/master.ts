@@ -9,6 +9,9 @@ import * as M from "materialize-css";
 	Swiper.use([Pagination, Navigation]);
 
 	const lazy = new Lazy({}, document.querySelectorAll(".lazy"));
+	const sidenav = M.Sidenav.init(document.querySelectorAll(".sidenav"), {
+		edge: "right",
+	});
 
 	if (document.querySelectorAll("#main-news").length) {
 		const newsSwiper = new Swiper("#main-news", {

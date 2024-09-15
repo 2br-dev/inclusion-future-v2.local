@@ -2,8 +2,12 @@
 
 class Post{
 
+	private $id;
 	public $doc;
 	public $images;
+	private $modx;
+	public $contentImages;
+	public $content;
 
 	// Инициализация
 	public function __construct($id = null){
@@ -59,8 +63,8 @@ class Post{
 		// Подготовка папки для сохраняемых изображений
 		$folderURL = "/uploads/post_" . $this->id;
 		$folderPath = MODX_BASE_PATH . $folderURL;
-		if (!file_exists($folder)) {
-			mkdir($folder, 0777, true);
+		if (!file_exists($folderPath)) {
+			mkdir($folderPath, 0777, true);
 		}
 
 		forEach($images as $image){
@@ -72,7 +76,7 @@ class Post{
 			file_put_contents($folderPath . "/" . $name, file_get_contents($image));
 			
 			// Меняем ссылки в контенте
-			$this->content = str_replace($image, $folderURL . "/" . $name, $this->content);
+			$this->content = str_replace($image, $folderURL . "/" . $name, stripslashes($this->content));
 		}
 	}
 }

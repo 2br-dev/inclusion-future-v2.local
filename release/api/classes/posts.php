@@ -20,13 +20,14 @@ class Posts{
 		$resources = $this->modx->getCollection('modResource', array('parent' => (int)$parent, 'deletedon' => 0));
 		$output = [];
 		forEach($resources as $doc){
-			$output[] = array(
+			$output[] = [
 				'id' => $doc->get('id'),
 				'pagetitle' => $doc->get('pagetitle'),
 				'introtext' => $doc->get('introtext'),
 				'cover' => $doc->getTVValue('image'),
 				'publishedon' => $doc->get('publishedon'),
-			);
+				'content' => stripslashes($doc->get('content'))
+			];
 		}
 		return $output;
 	}

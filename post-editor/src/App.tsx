@@ -7,6 +7,11 @@ import { useCallback, useEffect, useState } from "react";
 import {
 	Button,
 	CircularProgress,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
 	Fade,
 	LinearProgress,
 	Snackbar,
@@ -17,18 +22,19 @@ import React from "react";
 
 function App() {
 	interface IDoc {
-		id: number;
+		id: number | null;
 		pagetitle: string;
 		introtext: string;
 		cover: string;
-		content: object;
+		content: string | null;
 		imagelist: Array<string>;
 		selected: boolean;
 		loading: boolean;
+		hasChanges: boolean;
 	}
 
-	const defaultDocument = {
-		id: 0,
+	const defaultDocument: IDoc = {
+		id: null,
 		pagetitle: "Заголовок статьи",
 		introtext: "Текст вступления",
 		cover: "",
@@ -36,47 +42,18 @@ function App() {
 		selected: false,
 		loading: false,
 		imagelist: new Array<string>(),
+		hasChanges: false,
 	};
 
-	const [document, setDocument] = useState(defaultDocument);
+	const [document, setDocument] = useState({ ...defaultDocument });
+
 	const apiBase = "http://inclusion.local/";
 	const apiURL = `${apiBase}api/`;
 	const [docs, setDocs] = useState(Array<IDoc>);
 	const [listLoading, setListLoading] = useState(false);
 	const [snackbarOpen, setSnackbarOpen] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
-
-	const getList = useCallback(
-		(preselect: boolean = false) => {
-			setListLoading(true);
-			const selectedDoc = localStorage.getItem("selectedDoc");
-			fetch(`${apiURL}list.php?parent=2`)
-				.then((res) => res.json())
-				.then((response) => {
-					response.list.forEach((item: IDoc) => {
-						if (
-							preselect &&
-							selectedDoc &&
-							item.id === parseInt(selectedDoc)
-						) {
-							item.selected = true;
-							item.loading = true;
-						} else {
-							item.loading = false;
-							item.selected = false;
-						}
-					});
-					setDocs(response.list);
-					setListLoading(false);
-				})
-				.catch((err) => console.error(err));
-		},
-		[apiURL]
-	);
-
-	useEffect(() => {
-		getList(true);
-	}, [getList]);
+	const [dialogOpen, setDialogOpen] = useState(false);
 
 	const uploadFile = async (file: File) => {
 		const body = new FormData();
@@ -102,16 +79,118 @@ function App() {
 		uploadFile: uploadFile,
 	});
 
+	const handleChangeContent = () => {
+		const _docs = [...docs];
+		const _doc = _docs.find((doc) => doc.id === document.id);
+		if (_doc) {
+			_doc.hasChanges = true;
+			setDocs(_docs);
+		}
+	};
+
+	const getList = useCallback(
+		(preselect: boolean = false) => {
+			setListLoading(true);
+			const selectedDoc = localStorage.getItem("selectedDoc");
+			fetch(`${apiURL}list.php?parent=2`)
+				.then((res) => res.json())
+				.then((listResponse) => {
+					if (!listResponse.list.length) {
+						setListLoading(false);
+						return;
+					}
+					listResponse.list.forEach((item: IDoc) => {
+						if (
+							preselect &&
+							selectedDoc &&
+							item.id === parseInt(selectedDoc)
+						) {
+							item.selected = true;
+							item.loading = true;
+							item.hasChanges = false;
+							fetch(`${apiURL}read.php?id=${item.id}`)
+								.then((res) => res.json())
+								.then((response) => {
+									const responseDoc = response.data;
+									const content = responseDoc.content;
+									editor
+										.tryParseHTMLToBlocks(content)
+										.then((value) => {
+											editor.replaceBlocks(
+												editor.document,
+												value
+											);
+											setDocument({
+												id: responseDoc.id,
+												pagetitle:
+													responseDoc.pagetitle,
+												introtext:
+													responseDoc.introtext,
+												cover: responseDoc.cover,
+												content: responseDoc.content,
+												imagelist: [],
+												selected: true,
+												loading: false,
+												hasChanges: false,
+											});
+											const listItems = [
+												...listResponse.list,
+											];
+											const item = listItems.find(
+												(d) => d.id === responseDoc.id
+											);
+											if (item) {
+												item.loading = false;
+												setDocs(listItems);
+											}
+										});
+								});
+						} else {
+							item.loading = false;
+							item.selected = false;
+							item.hasChanges = false;
+						}
+					});
+
+					setDocs(listResponse.list);
+					setListLoading(false);
+				})
+				.catch((err) => console.error(err));
+		},
+		[apiURL, editor]
+	);
+
+	useEffect(() => {
+		getList(true);
+	}, [getList]);
+
 	const handlePagetitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const _doc = { ...document };
-		_doc.pagetitle = e.target.value;
-		setDocument(_doc);
+		const _selectedDoc = { ...document };
+		_selectedDoc.pagetitle = e.target.value;
+		setDocument(_selectedDoc);
+
+		const _docs = [...docs];
+		const _doc = _docs.find((d) => d.id === document.id);
+		if (_doc) {
+			_doc.pagetitle = e.target.value;
+			_doc.hasChanges = true;
+		}
+		setDocs(_docs);
 	};
 
 	const handleIntroChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-		const _doc = { ...document };
-		_doc.introtext = e.target.value;
-		setDocument(_doc);
+		const _selectedDoc = { ...document };
+		_selectedDoc.introtext = e.target.value;
+		_selectedDoc.hasChanges = true;
+		setDocument(_selectedDoc);
+
+		const _docs = [...docs];
+		const _doc = _docs.find((d) => d.id === document.id);
+		if (_doc) {
+			_doc.introtext = e.target.value;
+			_doc.hasChanges = true;
+		}
+		setDocs(_docs);
 	};
 
 	const savePost = async () => {
@@ -136,9 +215,29 @@ function App() {
 
 					if (!doc.id) {
 						getList();
+					} else {
+						const _docs = [...docs];
+						const _doc = _docs.find((d) => d.id === doc.id);
+						if (_doc) {
+							_doc.hasChanges = false;
+						}
+						setDocs(_docs);
 					}
 				});
 		});
+	};
+
+	const confirmDelete = () => {
+		if (document) {
+			if (document.id) {
+				setDialogOpen(true);
+			} else {
+				setDocs([...docs].filter((d) => d.id !== null));
+				const doc = { ...document };
+				doc.selected = false;
+				setDocument(doc);
+			}
+		}
 	};
 
 	const deletePost = () => {
@@ -150,6 +249,7 @@ function App() {
 				setDocs(_docs);
 				setSnackbarMessage(response.message);
 				setSnackbarOpen(true);
+				setDialogOpen(false);
 				setTimeout(() => {
 					setSnackbarOpen(false);
 				}, 2000);
@@ -158,121 +258,196 @@ function App() {
 	};
 
 	const ImagePlaceholder = () => {
-		return (
-			<div
-				style={{
-					display: "flex",
-					height: "100%",
-					flexDirection: "column",
-					justifyContent: "space-between",
-				}}
-			>
-				<div className="meta-editor">
-					<div className="image-placeholder">
-						<div className="intro">
-							Перетащите сюда картинку, или нажмите
-						</div>
-						<div className="button-wrapper">
-							<Button size="small">Загрузить</Button>
-						</div>
-					</div>
-					<input
-						onChange={handlePagetitleChange}
-						value={document.pagetitle}
-						className="pagetitle-editor"
-					/>
-					<TextareaAutosize
-						value={document.introtext}
-						onChange={handleIntroChange}
-						className="intro-editor"
-					/>
-				</div>
+		if (docs.length) {
+			const selected = docs.filter((d) => d.selected);
+			if (!selected.length) return <></>;
+			return (
 				<div
-					className="actions-control"
-					style={{ display: "flex", justifyContent: "space-between" }}
+					style={{
+						display: "flex",
+						height: "100%",
+						flexDirection: "column",
+						justifyContent: "space-between",
+					}}
 				>
-					<Button
-						color="error"
-						variant="contained"
-						disableElevation
-						size="small"
-						onClick={deletePost}
+					<div className="meta-editor">
+						<div className="image-placeholder">
+							<div className="intro">
+								Перетащите сюда картинку, или нажмите
+							</div>
+							<div className="button-wrapper">
+								<Button size="small">Загрузить</Button>
+							</div>
+						</div>
+						<input
+							onChange={handlePagetitleChange}
+							value={document.pagetitle}
+							className="pagetitle-editor"
+						/>
+						<TextareaAutosize
+							value={document.introtext}
+							onChange={handleIntroChange}
+							className="intro-editor"
+						/>
+					</div>
+					<div
+						className="actions-control"
+						style={{
+							display: "flex",
+							justifyContent: "space-between",
+						}}
 					>
-						Удалить
-					</Button>
-					<Button
-						variant="contained"
-						disableElevation
-						size="small"
-						onClick={savePost}
-					>
-						Сохранить
-					</Button>
+						<Button
+							color="error"
+							disableElevation
+							size="small"
+							onClick={confirmDelete}
+						>
+							Удалить
+						</Button>
+						<Button
+							disableElevation
+							size="small"
+							onClick={savePost}
+						>
+							Сохранить
+						</Button>
+					</div>
 				</div>
-			</div>
-		);
+			);
+		}
 	};
 
-	const setDoc = (e: React.MouseEvent<HTMLElement>) => {
+	const setDoc = async (e: React.MouseEvent<HTMLElement>) => {
 		if (!e.currentTarget) return;
 		const id = parseInt(e.currentTarget.dataset.id || "");
-		loadDoc(id);
-	};
 
-	const loadDoc = async (id: number) => {
+		if (document.id === null) {
+			editor.blocksToHTMLLossy().then((value) => {
+				document.content = value;
+			});
+		}
+
+		const filterId = isNaN(id) ? null : id;
 		const _docs = [...docs];
-		const doc = _docs.find((doc) => doc.id === id);
+		const doc = _docs.find((doc) => doc.id === filterId);
 
 		if (doc) {
 			if (!doc.selected) {
-				localStorage.setItem("selectedDoc", doc.id.toString());
+				localStorage.setItem("selectedDoc", (doc.id || "").toString());
+
 				_docs.forEach((d) => {
 					d.loading = false;
 					d.selected = false;
 				});
-				if (doc) {
+
+				if (doc.id === id) {
 					doc.selected = true;
 					doc.loading = true;
-					setDocs(_docs);
 				}
-				await fetch(`${apiURL}read.php?id=${id}`)
-					.then((res) => res.json())
-					.then((response) => {
-						setDocument(response.data);
-						editor
-							.tryParseHTMLToBlocks(response.data.content)
-							.then((value) => {
-								editor.replaceBlocks(editor.document, value);
+
+				setDocs(_docs);
+				setDocument(doc);
+
+				if (doc.id !== null) {
+					await fetch(`${apiURL}read.php?id=${id}`)
+						.then((res) => res.json())
+						.then((response) => {
+							const doc = response.data;
+							setDocument({
+								id: parseInt(doc.id),
+								pagetitle: doc.pagetitle,
+								introtext: doc.introtext,
+								content: doc.content,
+								loading: false,
+								selected: false,
+								hasChanges: false,
+								cover: "",
+								imagelist: [],
 							});
-						docs.forEach((d) => (d.loading = false));
-						setDocs([...docs]);
-					});
+							docs.forEach((d) => (d.loading = false));
+							setDocs([...docs]);
+							editor
+								.tryParseHTMLToBlocks(response.data.content)
+								.then((value) => {
+									editor.replaceBlocks(
+										editor.document,
+										value
+									);
+								});
+						});
+				} else {
+					editor
+						.tryParseHTMLToBlocks(doc.content || "")
+						.then((value) => {
+							editor.replaceBlocks(editor.document, value);
+						});
+					doc.loading = false;
+				}
 			} else {
 				doc.selected = false;
 				localStorage.removeItem("selectedDoc");
 				setDocs([...docs]);
-				setDocument(defaultDocument);
-				editor.replaceBlocks(editor.document, []);
+				editor.removeBlocks(editor.document);
 			}
 		}
 	};
 
+	const makeDocument = () => {
+		const _docs = [...docs];
+		docs.forEach((d) => (d.selected = false));
+		const doc = {
+			id: null,
+			pagetitle: defaultDocument.pagetitle,
+			introtext: defaultDocument.introtext,
+			content: "",
+			cover: "",
+			imagelist: [],
+			loading: false,
+			selected: true,
+			hasChanges: false,
+		};
+		_docs.push(doc);
+		editor.tryParseHTMLToBlocks("").then((value) => {
+			editor.replaceBlocks(editor.document, value);
+		});
+		setDocument(doc);
+		setDocs(_docs);
+	};
+
 	const DocList = () => {
+		const changedDoc = docs.find((d) => d.hasChanges);
+
+		const className = (doc: IDoc) => {
+			let c = "doc-item";
+			c += doc.selected ? " selected" : "";
+			c += doc.loading ? " loading" : "";
+			c += doc.hasChanges ? " has-changes" : "";
+			c +=
+				document.id === null &&
+				document.selected &&
+				document.id !== doc.id
+					? " disabled"
+					: "";
+			if (changedDoc) {
+				c += doc.id !== changedDoc.id ? " disabled" : "";
+			}
+			return c;
+		};
+
 		return (
 			<>
 				<div className="block-header">Другие документы</div>
 				<div className="list-wrapper">
 					{docs.map((doc, dindex) => (
 						<div
-							className={
-								doc.selected ? "doc-item selected" : "doc-item"
-							}
+							className={className(doc)}
 							onClick={setDoc}
 							data-id={doc.id}
 							key={dindex}
 						>
 							<div
-								className="avatar"
+								className={"avatar"}
 								style={{
 									backgroundImage:
 										"url(" +
@@ -289,9 +464,50 @@ function App() {
 							<div className="pagetitle">{doc.pagetitle}</div>
 						</div>
 					))}
+					<div style={{ padding: "20px" }}>
+						{!docs.filter((d) => d.id === null).length ? (
+							<Button onClick={makeDocument}>
+								Новый документ
+							</Button>
+						) : (
+							<></>
+						)}
+					</div>
 				</div>
 			</>
 		);
+	};
+
+	const editorControl = () => {
+		if (docs.length) {
+			if (docs.filter((d) => d.selected).length) {
+				return (
+					<BlockNoteView
+						editor={editor}
+						theme="light"
+						onKeyUp={handleChangeContent}
+					/>
+				);
+			} else {
+				return (
+					<div className="editor-placeholder">
+						<h2>Создайте новый документ</h2>
+						<p>
+							В настоящий момент нет выбранного документа для
+							редактирования. Пожалуйста, выберите документ из
+							списка справа, или создайте новый.
+						</p>
+						<Button onClick={makeDocument} variant="contained">
+							Новый документ
+						</Button>
+					</div>
+				);
+			}
+		}
+	};
+
+	const handleCloseDialog = () => {
+		setDialogOpen(false);
 	};
 
 	return (
@@ -299,17 +515,36 @@ function App() {
 			<div className="container">
 				<div className="main-editor-layout">
 					<aside className="meta-wrapper">{ImagePlaceholder()}</aside>
-					<main className="main-wrapper">
-						<BlockNoteView editor={editor} theme="light" />
-					</main>
+					<main className="main-wrapper">{editorControl()}</main>
 					<aside className="docs-wrapper">
 						<Fade in={listLoading}>
 							<LinearProgress sx={{ marginBottom: "20px" }} />
 						</Fade>
-						<DocList />
+						{DocList()}
 					</aside>
 				</div>
 			</div>
+			<Dialog
+				open={dialogOpen}
+				onClose={handleCloseDialog}
+				aria-labelledby="alert-dialog-title"
+				aria-describedby="alert-dialog-description"
+			>
+				<DialogTitle id="alert-dialog-title">
+					Удаление документа
+				</DialogTitle>
+				<DialogContent>
+					<DialogContentText id="alert-dialog-description">
+						Вы действительно хотите удалить этот документ?
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button onClick={handleCloseDialog}>Отмена</Button>
+					<Button onClick={deletePost} autoFocus color="error">
+						Удалить
+					</Button>
+				</DialogActions>
+			</Dialog>
 			<Snackbar
 				open={snackbarOpen}
 				message={snackbarMessage}

@@ -101,13 +101,3 @@ body section#news .news-content .next {
 body section#partners .swiper-slide {
     text-align: center;
 }
-
-footer {
-    background-color: #3469e6;
-    padding: 4vmax 0;
-    color: #fff;
-}
-
-footer a {
-    color: #fff;
-}

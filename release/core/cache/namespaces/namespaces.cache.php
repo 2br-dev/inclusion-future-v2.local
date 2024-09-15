@@ -1,8 +1,14 @@
 <?php  return array (
+  'ace' => 
+  array (
+    'name' => 'ace',
+    'path' => 'G:/Hosts/inclusion-future-v2.local/release/core/components/ace/',
+    'assets_path' => '',
+  ),
   'core' => 
   array (
     'name' => 'core',
-    'path' => 'D:/Projects/Hosts/inclusion-future-v2.local/release/manager/',
-    'assets_path' => 'D:/Projects/Hosts/inclusion-future-v2.local/release/manager/assets/',
+    'path' => 'G:/Hosts/inclusion-future-v2.local/release/manager/',
+    'assets_path' => 'G:/Hosts/inclusion-future-v2.local/release/manager/assets/',
   ),
 );

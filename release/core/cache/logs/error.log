@@ -38,3 +38,8 @@ Array
 [2024-09-15 21:29:05] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
 [2024-09-15 21:29:14] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
 [2024-09-15 21:36:34] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-15 21:55:42] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-15 21:57:50] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-15 22:01:14] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-15 22:02:54] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL
+[2024-09-15 22:05:20] (ERROR @ G:\Hosts\inclusion-future-v2.local\release\core\vendor\xpdo\xpdo\src\xPDO\Om\xPDOObject.php : 806) MODX\Revolution\modDocument: Attempt to set NOT NULL field publishedon to NULL

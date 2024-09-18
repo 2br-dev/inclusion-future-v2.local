@@ -2178,7 +2178,7 @@ section {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1 {
+h1, body .pseudo-h1 {
     font-size: 2em;
     margin: 0.67em 0;
 }
@@ -2587,15 +2587,6 @@ textarea {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-ul:not(.browser-default) {
-    padding-left: 0;
-    list-style-type: none;
-}
-
-ul:not(.browser-default) > li {
-    list-style-type: none;
-}
-
 a {
     color: #039be5;
     text-decoration: none;
@@ -2743,7 +2734,7 @@ video.responsive-video {
         width: 100%;
     }
 
-    .pagination li.prev,
+    .pagination li.prev, .pagination body > main .news-content li.next, body > main .news-content .pagination li.next,
     .pagination li.next {
         width: 10%;
     }
@@ -6189,26 +6180,157 @@ body {
     font-size: clamp(16px, 3vw, 18px);
 }
 
-body h1 {
+body h1, body .pseudo-h1 {
     line-height: 1.2em;
     font-size: clamp(32px, 3.5vw, 96px);
     font-family: "Unageo", sans-serif;
+    font-weight: bold;
 }
 
-body h2 {
+body h2, body .pseudo-h2 {
     line-height: 1.4em;
-    font-size: clamp(24px, 3vw, 48px);
+    font-size: clamp(26px, 3vw, 48px);
     font-family: "Unageo", sans-serif;
+    font-weight: bold;
 }
 
-body h3 {
+body h3, body .pseudo-h3 {
+    line-height: 1.4em;
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: normal;
+    font-family: "Unageo";
+}
+
+body h4, body .pseudo-h4 {
     line-height: 1.4em;
     font-size: clamp(18px, 3vw, 24px);
     font-family: "Unageo";
+    font-weight: bold;
 }
 
 body {
     color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body section {
+    padding: 4vmax 0;
+}
+
+body [data-content-type="bulletListView"] {
+    border: 1px solid red;
+}
+
+body .pagination {
+    display: inline-flex;
+    align-items: center;
+}
+
+body .pagination li {
+    border-radius: 50% !important;
+    height: unset;
+    margin: 0 4px;
+}
+
+body .pagination li.active {
+    background-color: #66cd00;
+}
+
+body .pagination li a,
+      body .pagination li span {
+    display: block;
+    width: 2em;
+    height: 2em;
+    min-height: 100%;
+    max-height: unset;
+    line-height: 2em;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    font-size: clamp(16px, 3vw, 18px);
+}
+
+body .pagination li:hover a {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body > main {
+    flex-grow: 1;
+}
+
+body > main .page-head {
+    height: 55vmin;
+    margin-bottom: -50vmin;
+    min-height: 360px;
+}
+
+@media (max-width: 700px) {
+    body > main .page-head {
+        margin-bottom: -360px;
+    }
+}
+
+body > main .news-content {
+    position: relative;
+}
+
+body > main .news-content .swiper {
+    padding: 40px 16px;
+    box-sizing: border-box;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+}
+
+body > main .news-content .swiper .swiper-slide {
+    height: unset;
+}
+
+body > main .news-content .swiper .swiper-slide .news-card {
+    height: 100%;
+}
+
+body > main .news-content .prev, body > main .news-content .next {
+    position: absolute;
+    width: 60px;
+    aspect-ratio: 1 / 1;
+    text-align: center;
+    line-height: 60px;
+    font-size: 24px;
+    top: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+@media (max-width: 850px) {
+    body > main .news-content .prev, body > main .news-content .next {
+        display: none;
+    }
+}
+
+body > main .news-content .next {
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+body .list-top {
+    height: 50vh;
+    max-height: 800px;
+    padding: 0;
+    margin-bottom: -45vh;
+    z-index: -1;
+}
+
+body .list-top img {
+    max-height: 100%;
+    width: auto;
+    float: right;
 }
 
 body .margin-bottom {
@@ -6269,6 +6391,9 @@ body .news-card {
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 body .news-card .news-card-image {
@@ -6279,11 +6404,13 @@ body .news-card .news-card-image {
     padding: 20px;
     box-sizing: border-box;
     position: relative;
+    background-position: center center;
 }
 
 body .news-card .news-card-title {
     padding: clamp(10px, 1vw, 20px);
     padding-bottom: 5px;
+    flex-grow: 1;
 }
 
 body .news-card .news-card-footer {
@@ -6292,6 +6419,7 @@ body .news-card .news-card-footer {
     padding: clamp(10px, 1vw, 20px);
     padding-top: 5px;
     color: #aaaaaa;
+    font-size: clamp(14px, 2vw, 16px);
 }
 
 body .swiper-pagination {
@@ -6314,6 +6442,111 @@ body .swiper-pagination .swiper-pagination-bullet-active {
     background-color: #ffa20e;
 }
 
+body .box-content-icon {
+    color: #3469e6;
+    font-size: clamp(22px, 2vw, 32px);
+}
+
+body .pin {
+    position: sticky;
+    top: 120px;
+}
+
+body .banner-button {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+@media (min-width: 1600px) {
+    body .banner-button {
+        aspect-ratio: 3.5 / 1;
+    }
+}
+
+@media (max-width: 1400px) {
+    body .banner-button {
+        aspect-ratio: unset;
+    }
+}
+
+@media (max-width: 850px) {
+    body .banner-button {
+        width: 100%;
+        aspect-ratio: 3 / 1;
+    }
+}
+
+@media (max-width: 600px) {
+    body .banner-button {
+        min-height: 160px;
+        height: unset;
+        aspect-ratio: unset;
+    }
+}
+
+body .banner-button#importance {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+body .banner-button#identics {
+    background-color: #ffa20e;
+    color: #fff;
+}
+
+body .banner-button .text {
+    flex-grow: 1;
+    min-width: 65%;
+    padding: clamp(10px, 2vw, 20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 1.2em;
+}
+
+body .banner-button .text p {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: clamp(14px, 2vw, 16px);
+    line-height: 1.2em;
+}
+
+body .banner-button .text p.title {
+    font-size: clamp(21px, 2vw, 48px);
+    line-height: 1.2em;
+    font-weight: bold;
+    font-family: "Unageo";
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1400px) {
+    body .banner-button .image {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+    body .banner-button .image {
+        display: initial;
+    }
+}
+
+@media (max-width: 600px) {
+    body .banner-button .image {
+        display: none;
+    }
+}
+
+body .banner-button .image img {
+    height: 20px;
+    min-height: 100%;
+}
+
 header {
     background-color: #fff;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
@@ -6322,6 +6555,7 @@ header {
 header .container {
     height: 8vmax;
     min-height: 80px;
+    max-height: 161px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -6336,6 +6570,11 @@ header .container .burger {
     color: #333;
 }
 
+header .container nav ul {
+    list-style: none;
+    padding: 0;
+}
+
 header .container nav > ul {
     display: flex;
 }
@@ -6348,7 +6587,7 @@ header .container nav > ul > li > a {
     display: block;
     line-height: 2em;
     padding: 0 0.8em;
-    margin-left: 3vw;
+    margin-left: 2.5vw;
     border-radius: 6px;
     transition: background-color 0.2s ease-in-out;
     color: #333;
@@ -6400,10 +6639,52 @@ header .container nav > ul > li:hover > ul {
     pointer-events: all;
 }
 
+header#fixed {
+    position: fixed;
+    top: -100px;
+    width: 100%;
+    z-index: 3;
+    transition: top 0.4s;
+    background: #ffffffcc;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+header#fixed .container {
+    height: 64px;
+    min-height: unset;
+}
+
+header#fixed.visible {
+    top: 0;
+}
+
+header#fixed .logo br {
+    display: none;
+}
+
+header#fixed .logo img {
+    height: 30px;
+}
+
+header#fixed ul {
+    margin: 0;
+}
+
 footer {
     background-color: #3469e6;
     padding: 4vmax 0;
     color: #fff;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer i {
+    margin-right: 6px;
 }
 
 footer a {

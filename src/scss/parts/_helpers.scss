@@ -1,6 +1,124 @@
 body {
 	color: $text;
 
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	& section {
+		padding: 4vmax 0;
+	}
+
+	& [data-content-type="bulletListView"] {
+		border: 1px solid red;
+	}
+
+	& .pagination {
+		display: inline-flex;
+		align-items: center;
+
+		& li {
+			border-radius: 50% !important;
+			height: unset;
+			margin: 0 4px;
+
+			&.active {
+				background-color: $primary;
+			}
+
+			& a,
+			& span {
+				display: block;
+				width: 2em;
+				height: 2em;
+				min-height: 100%;
+				max-height: unset;
+				line-height: 2em;
+				padding: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 50%;
+				transition: background-color 0.2s;
+				font-size: clamp(16px, 3vw, 18px);
+			}
+
+			&:hover a {
+				background-color: rgba(black, 0.1);
+			}
+		}
+	}
+
+	& > main {
+		flex-grow: 1;
+		& .page-head {
+			height: 55vmin;
+			margin-bottom: -50vmin;
+			min-height: 360px;
+
+			@media (max-width: 700px) {
+				margin-bottom: -360px;
+			}
+		}
+
+		& .news-content {
+			position: relative;
+
+			& .swiper {
+				padding: 40px 16px;
+				box-sizing: border-box;
+				width: calc(100% + 32px);
+				margin-left: -16px;
+
+				& .swiper-slide {
+					height: unset;
+
+					& .news-card {
+						height: 100%;
+					}
+				}
+			}
+
+			& .prev {
+				position: absolute;
+				width: 60px;
+				aspect-ratio: 1 / 1;
+				text-align: center;
+				line-height: 60px;
+				font-size: 24px;
+				top: 50%;
+				z-index: 10;
+				transform: translate(-50%, -50%);
+				background-color: #fff;
+				border-radius: 50%;
+
+				@media (max-width: $medium) {
+					display: none;
+				}
+			}
+
+			& .next {
+				@extend .prev;
+				right: 0;
+				transform: translate(50%, -50%);
+			}
+		}
+	}
+
+	& .list-top {
+		height: 50vh;
+		max-height: 800px;
+		padding: 0;
+		margin-bottom: -45vh;
+		z-index: -1;
+
+		& img {
+			max-height: 100%;
+			width: auto;
+			float: right;
+		}
+	}
+
 	& .margin-bottom {
 		margin-bottom: 20px;
 	}
@@ -59,6 +177,9 @@ body {
 		background-color: #fff;
 		border-radius: $border-radius;
 		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 
 		& .news-card-image {
 			display: block;
@@ -68,11 +189,13 @@ body {
 			padding: $gutter-width;
 			box-sizing: border-box;
 			position: relative;
+			background-position: center center;
 		}
 
 		& .news-card-title {
 			padding: clamp(10px, 1vw, 20px);
 			padding-bottom: 5px;
+			flex-grow: 1;
 		}
 
 		& .news-card-footer {
@@ -81,6 +204,7 @@ body {
 			padding: clamp(10px, 1vw, 20px);
 			padding-top: 5px;
 			color: $fogged;
+			font-size: clamp(14px, 2vw, 16px);
 		}
 	}
 
@@ -100,6 +224,99 @@ body {
 
 			&-active {
 				background-color: $secondary;
+			}
+		}
+	}
+
+	& .box-content-icon {
+		color: $tetriary;
+		font-size: clamp(22px, 2vw, 32px);
+	}
+
+	& .pin {
+		position: sticky;
+		top: 120px;
+	}
+
+	& .banner-button {
+		display: block;
+		width: 100%;
+		aspect-ratio: 3 / 1;
+		display: flex;
+		border-radius: $border-radius;
+		overflow: hidden;
+		min-height: 100%;
+
+		@media (min-width: 1600px) {
+			aspect-ratio: 3.5 / 1;
+		}
+
+		@media (max-width: 1400px) {
+			aspect-ratio: unset;
+		}
+
+		@media (max-width: 850px) {
+			width: 100%;
+			aspect-ratio: 3 / 1;
+		}
+
+		@media (max-width: 600px) {
+			min-height: 160px;
+			height: unset;
+			aspect-ratio: unset;
+		}
+
+		&#importance {
+			background-color: #f5f5f5;
+			color: $text;
+		}
+
+		&#identics {
+			background-color: $secondary;
+			color: #fff;
+		}
+
+		& .text {
+			flex-grow: 1;
+			min-width: 65%;
+			padding: clamp(10px, 2vw, 20px);
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			line-height: 1.2em;
+
+			& p {
+				margin-top: 0;
+				margin-bottom: 20px;
+				font-size: clamp(14px, 2vw, 16px);
+				line-height: 1.2em;
+
+				&.title {
+					font-size: clamp(21px, 2vw, 48px);
+					line-height: 1.2em;
+					font-weight: bold;
+					font-family: "Unageo";
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		& .image {
+			@media (max-width: 1400px) {
+				display: none;
+			}
+
+			@media (max-width: 850px) {
+				display: initial;
+			}
+
+			@media (max-width: 600px) {
+				display: none;
+			}
+
+			& img {
+				height: 20px;
+				min-height: 100%;
 			}
 		}
 	}

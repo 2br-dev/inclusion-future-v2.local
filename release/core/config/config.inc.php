@@ -15,35 +15,35 @@ $config_options = array (
 $driver_options = array (
 );
 
-$lastInstallTime = 1726301108;
+$lastInstallTime = 1726467352;
 
-$site_id = 'modx66e543b456a666.90190508';
-$site_sessionname = 'SN66e5424529eb3';
+$site_id = 'modx66e7cd187a2d87.18392857';
+$site_sessionname = 'SN66e7cce58cdac';
 $https_port = '443';
-$uuid = '094d37de-169c-4bc7-8671-7ae9286ab07d';
+$uuid = '1632099c-638e-4633-967b-78077e79ffee';
 
 if (!defined('MODX_CORE_PATH')) {
-    $modx_core_path= 'G:/Hosts/inclusion-future-v2.local/release/core/';
+    $modx_core_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/core/';
     define('MODX_CORE_PATH', $modx_core_path);
 }
 if (!defined('MODX_PROCESSORS_PATH')) {
-    $modx_processors_path= 'G:/Hosts/inclusion-future-v2.local/release/core/src/Revolution/Processors/';
+    $modx_processors_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/core/src/Revolution/Processors/';
     define('MODX_PROCESSORS_PATH', $modx_processors_path);
 }
 if (!defined('MODX_CONNECTORS_PATH')) {
-    $modx_connectors_path= 'G:/Hosts/inclusion-future-v2.local/release/connectors/';
+    $modx_connectors_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/connectors/';
     $modx_connectors_url= '/connectors/';
     define('MODX_CONNECTORS_PATH', $modx_connectors_path);
     define('MODX_CONNECTORS_URL', $modx_connectors_url);
 }
 if (!defined('MODX_MANAGER_PATH')) {
-    $modx_manager_path= 'G:/Hosts/inclusion-future-v2.local/release/manager/';
+    $modx_manager_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/manager/';
     $modx_manager_url= '/manager/';
     define('MODX_MANAGER_PATH', $modx_manager_path);
     define('MODX_MANAGER_URL', $modx_manager_url);
 }
 if (!defined('MODX_BASE_PATH')) {
-    $modx_base_path= 'G:/Hosts/inclusion-future-v2.local/release/';
+    $modx_base_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/';
     $modx_base_url= '/';
     define('MODX_BASE_PATH', $modx_base_path);
     define('MODX_BASE_URL', $modx_base_url);
@@ -73,7 +73,7 @@ if (!defined('MODX_SITE_URL')) {
     define('MODX_SITE_URL', $site_url);
 }
 if (!defined('MODX_ASSETS_PATH')) {
-    $modx_assets_path= 'G:/Hosts/inclusion-future-v2.local/release/assets/';
+    $modx_assets_path= 'D:/Projects/Hosts/inclusion-future-v2.local/release/assets/';
     $modx_assets_url= '/assets/';
     define('MODX_ASSETS_PATH', $modx_assets_path);
     define('MODX_ASSETS_URL', $modx_assets_url);

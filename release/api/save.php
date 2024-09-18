@@ -8,19 +8,22 @@ $data = json_decode($request, true);
 require_once("./classes/post.php");
 
 $id = $data['id'];
-$pagetitle = (string)addslashes($data['pagetitle']);
-$introtext = (string)addslashes($data['introtext']);
-$content = (string)addslashes($data['content']);
+$pagetitle = (string)$data['pagetitle'];
+$introtext = (string)$data['introtext'];
+$content = (string)$data['content'];
 
 $post = new Post($id);
 
-$result = $post->save([
-	'pagetitle' => $pagetitle,
-	'introtext' => $introtext,
-	'content' => $content,
-	'parent' => 2,
-	'publishedon' => $published
-]);
+try{
+
+	$result = $post->save([
+		'pagetitle' => $pagetitle,
+		'introtext' => $introtext,
+		'content' => $content,
+	]);
+}catch(Exception $ex){
+	$result = $ex->getMessage();
+}
 
 if($result){
 	http_response_code(200);

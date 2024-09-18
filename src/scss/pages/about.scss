@@ -1,0 +1,286 @@
+@mixin contentCircle($backgroundColor) {
+	content: "";
+	display: block;
+	width: 50%;
+	height: 50%;
+	position: absolute;
+	z-index: -1;
+	background-color: $backgroundColor;
+}
+
+main {
+	& .header-logo {
+		@media (max-width: 1200px) {
+			display: flex;
+			width: fit-content;
+			justify-content: center;
+			margin: 4vmax auto;
+
+			& img {
+				width: 25%;
+				margin-right: 20px;
+			}
+		}
+	}
+
+	& .about-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		margin: 4vmax 0;
+		width: 100%;
+		aspect-ratio: 3 / 2;
+
+		& .grid-item {
+			display: flex;
+
+			& .grid-image {
+				aspect-ratio: 1 / 1;
+				flex-shrink: 0;
+				position: relative;
+				z-index: 2;
+
+				& img {
+					display: block;
+					position: absolute;
+				}
+			}
+
+			& .grid-content {
+				font-size: 14px;
+				line-height: 1.4em;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				padding: 5%;
+				transition: opacity 0.2s;
+				opacity: 0;
+				z-index: 0;
+
+				& p {
+					transition: transform 0.4s;
+				}
+			}
+
+			&:hover .grid-content {
+				opacity: 1;
+
+				& p {
+					transform: none !important;
+				}
+			}
+
+			&#trauma {
+				grid-row: 1 / 3;
+				grid-column: 1 / 2;
+				flex-direction: column-reverse;
+
+				& .grid-image {
+					width: 100%;
+					aspect-ratio: 1 / 1;
+
+					& img {
+						width: 100%;
+						bottom: 0;
+					}
+				}
+
+				& .grid-content {
+					width: 100%;
+					aspect-ratio: 1 /1;
+					background-color: #ae00cd;
+					color: #fff;
+
+					& p {
+						transform: translateY(20px);
+					}
+				}
+			}
+
+			&#old {
+				grid-column: 2 / 4;
+				grid-row: 1 / 2;
+				display: flex;
+
+				& .grid-image {
+					width: 50%;
+
+					& img {
+						width: 100%;
+					}
+				}
+
+				& .grid-content {
+					background-color: #66cd00;
+					color: #fff;
+					position: relative;
+
+					& p {
+						transform: translateX(-20px);
+					}
+
+					&:before {
+						@include contentCircle(#66cd00);
+						left: 0;
+						top: 50%;
+						transform: translate(-50%, -50%);
+					}
+				}
+			}
+
+			&#refugee {
+				grid-column: 2 / 4;
+				grid-row: 2 / 3;
+				flex-direction: row-reverse;
+
+				& .grid-image {
+					width: 50%;
+
+					& img {
+						width: 100%;
+					}
+				}
+
+				& .grid-content {
+					background-color: #ff9803;
+					color: #fff;
+					position: relative;
+
+					& p {
+						transform: translateX(20px);
+					}
+
+					&:before {
+						@include contentCircle(#ff9803);
+						top: 50%;
+						left: 0;
+						transform: translate(-50%, -50%);
+					}
+
+					&:after {
+						@include contentCircle(#ff9803);
+						top: 0%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					}
+				}
+			}
+		}
+
+		@media (max-width: 650px) {
+			aspect-ratio: 2 / 3;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(3, 1fr);
+
+			& .grid-item {
+				&#trauma {
+					flex-direction: row;
+					grid-row: 1 / 2;
+					grid-column: 1 / 3;
+					background-color: #ae00cd;
+
+					& .grid-image {
+						width: 50%;
+					}
+
+					& .grid-content {
+						opacity: 1;
+						z-index: 1;
+					}
+				}
+
+				&#old {
+					grid-column: 1 / 3;
+					grid-row: 2 / 3;
+					flex-direction: row-reverse;
+					background-color: #66cd00;
+
+					& .grid-content {
+						z-index: 1;
+						opacity: 1;
+
+						&:before,
+						&:after {
+							display: none;
+						}
+					}
+				}
+
+				&#refugee {
+					grid-column: 1 / 3;
+					grid-row: 3 / 4;
+					flex-direction: row;
+
+					& .grid-content {
+						z-index: 0;
+						opacity: 1;
+						&:before,
+						&:after {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+
+		@media (max-width: 400px) {
+			display: block;
+
+			& .grid-item {
+				&#trauma,
+				&#old,
+				&#refugee {
+					display: block;
+
+					& .grid-image {
+						width: 100%;
+					}
+
+					& .grid-content {
+						aspect-ratio: unset;
+					}
+				}
+
+				&#refugee {
+					& .grid-content {
+						padding-top: 6vmax;
+					}
+				}
+			}
+		}
+	}
+
+	& #concilium {
+		padding: 4vmax 5vmin;
+		background-image: url(/assets/img/concilium_bg.png);
+		background-color: #eff8ff;
+		background-size: auto 100%;
+		background-position: center center;
+		background-repeat: no-repeat;
+		overflow: unset;
+
+		@media (max-width: 850px) {
+			background-image: none !important;
+		}
+	}
+
+	& .employee {
+		& h4 {
+			margin: 0;
+		}
+
+		& .employee-photo {
+			width: 150px;
+			height: auto;
+			mask-image: url(/assets/img/puzzle.svg);
+			mask-size: 150px auto;
+		}
+	}
+
+	& #partners {
+		.swiper-slide {
+			text-align: center;
+		}
+	}
+}

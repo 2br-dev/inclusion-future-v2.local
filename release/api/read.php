@@ -19,7 +19,7 @@ if(!$post->doc){
 			'id' => $post->doc->get('id'),
 			'pagetitle' => $post->doc->get('pagetitle'),
 			'introtext'=>$post->doc->get('introtext'),
-			'content'=>stripslashes($post->doc->get('content')),
+			'content'=>stripSlashes($post->doc->get('content')),
 			'image'=>$post->doc->getTVValue('image')
 		]
 	], JSON_UNESCAPED_UNICODE);

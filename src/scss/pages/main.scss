@@ -2,8 +2,6 @@
 
 body {
 	& section {
-		padding: 4vmax 0;
-
 		&#hero {
 			& img {
 				&.logo {
@@ -42,7 +40,7 @@ body {
 
 		&#news {
 			background-color: #ffede5;
-			max-width: 100%;
+			max-width: 100vw;
 			overflow: hidden;
 
 			& .news-header {
@@ -64,41 +62,6 @@ body {
 			}
 			& h2 {
 				margin: 0;
-			}
-
-			& .news-content {
-				position: relative;
-
-				& .swiper {
-					padding: 40px 18px;
-					box-sizing: border-box;
-					width: calc(100% + 36px);
-					margin-left: -18px;
-				}
-
-				& .prev {
-					position: absolute;
-					width: 60px;
-					aspect-ratio: 1 / 1;
-					text-align: center;
-					line-height: 60px;
-					font-size: 24px;
-					top: 50%;
-					z-index: 10;
-					transform: translate(-50%, -50%);
-					background-color: #fff;
-					border-radius: 50%;
-
-					@media (max-width: $medium) {
-						display: none;
-					}
-				}
-
-				& .next {
-					@extend .prev;
-					right: 0;
-					transform: translate(50%, -50%);
-				}
 			}
 		}
 

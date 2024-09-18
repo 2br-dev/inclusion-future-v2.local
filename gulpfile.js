@@ -16,9 +16,10 @@ const webpack = require("webpack-stream");
 const include = require("gulp-file-include");
 const beautify = require("gulp-html-beautify");
 const sync = require("browser-sync").init({
-	server: {
-		baseDir: "./release/",
-	},
+	// server: {
+	// 	baseDir: "./release/",
+	// },
+	proxy: "http://inclusion.local/",
 });
 
 //= ::::::::::::::::::: TASKS :::::::::::::::::::: =//

@@ -1,0 +1,77 @@
+main#news .page-head {
+    background-color: #eff8ff;
+    background-image: url("/assets/img/news.svg");
+    background-size: auto 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+main#news h1,
+main#news h2 {
+    color: #18476c;
+}
+
+main #content {
+    overflow: hidden;
+}
+
+main#media .page-head {
+    background-color: #ffe8c3;
+    background-image: url("/assets/img/media.svg");
+    background-size: auto 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+main#media h1,
+main#media h2 {
+    color: #795214;
+}
+
+main#library .page-head {
+    background-color: #d9ffd2;
+    background-image: url("/assets/img/library.svg");
+    background-size: auto 100%;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+main#library h1,
+main#library h2 {
+    color: #256d17;
+}
+
+main .roubrics {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+main .pseudotabs {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    overflow: auto;
+    padding: 0;
+}
+
+main .pseudotabs::-webkit-scrollbar {
+    height: 0;
+}
+
+main .pseudotabs li {
+    margin-right: 10px;
+    list-style: none;
+}
+
+main .pseudotabs li a {
+    display: block;
+    padding: 6px 20px;
+    color: #333;
+}
+
+main .pseudotabs li.active a {
+    border-bottom: 2px solid #ffa20e;
+}

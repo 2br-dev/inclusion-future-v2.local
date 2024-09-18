@@ -5,6 +5,7 @@ header {
 	& .container {
 		height: 8vmax;
 		min-height: 80px;
+		max-height: 161px;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -19,6 +20,11 @@ header {
 		}
 
 		& nav {
+			& ul {
+				list-style: none;
+				padding: 0;
+			}
+
 			& > ul {
 				display: flex;
 
@@ -29,7 +35,7 @@ header {
 						display: block;
 						line-height: 2em;
 						padding: 0 0.8em;
-						margin-left: 3vw;
+						margin-left: 2.5vw;
 						border-radius: 6px;
 						transition: background-color 0.2s ease-in-out;
 						color: $text;
@@ -85,6 +91,39 @@ header {
 					}
 				}
 			}
+		}
+	}
+
+	&#fixed {
+		position: fixed;
+		top: -100px;
+		width: 100%;
+		z-index: 3;
+		transition: top 0.4s;
+		background: #ffffffcc;
+		backdrop-filter: blur(10px);
+
+		& .container {
+			height: 64px;
+			min-height: unset;
+		}
+
+		&.visible {
+			top: 0;
+		}
+
+		& .logo {
+			& br {
+				display: none;
+			}
+
+			& img {
+				height: 30px;
+			}
+		}
+
+		& ul {
+			margin: 0;
 		}
 	}
 }

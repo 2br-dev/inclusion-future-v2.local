@@ -8,13 +8,26 @@ import * as M from "materialize-css";
 
 	Swiper.use([Pagination, Navigation]);
 
-	const lazy = new Lazy({}, document.querySelectorAll(".lazy"));
+	let lazy = new Lazy({}, document.querySelectorAll(".lazy"));
 	const sidenav = M.Sidenav.init(document.querySelectorAll(".sidenav"), {
 		edge: "right",
 	});
 
-	if (document.querySelectorAll("#main-news").length) {
-		const newsSwiper = new Swiper("#main-news", {
+	function updateNavbar() {
+		const scrollTop = document.documentElement.scrollTop;
+		const navbar = document.querySelector("header#fixed");
+		if (scrollTop > 200) {
+			navbar.classList.add("visible");
+		} else {
+			navbar.classList.remove("visible");
+		}
+		requestAnimationFrame(updateNavbar);
+	}
+
+	updateNavbar();
+
+	if (document.querySelectorAll("#news-slider").length) {
+		const newsSwiper = new Swiper("#news-slider", {
 			spaceBetween: 20,
 			pagination: {
 				type: "bullets",
@@ -38,8 +51,10 @@ import * as M from "materialize-css";
 				1600: {
 					slidesPerView: 4,
 				},
-				1800: {
-					slidesPerView: 5,
+			},
+			on: {
+				slideChange: () => {
+					lazy.update();
 				},
 			},
 		});

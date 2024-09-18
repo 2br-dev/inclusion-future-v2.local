@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.container .bn-block-content:not([data-content-type="bulletListItem"]) {
+    margin-top: 40px;
+}
+
+img {
+    border-radius: 6px;
+    max-width: 100%;
+}
+
+main ul:not(.browser-default) {
+    padding-left: 0;
+    list-style-type: disc;
+}
+
+main ul:not(.browser-default) > li {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+main ul:not(.browser-default) ul {
+    list-style-type: circle;
+}
+
+main ul:not(.browser-default) ul li {
+    list-style-type: circle;
+    padding-left: 40px;
+}
+
+[data-content-type="bulletListItem"] p {
+    margin: 0;
+}
+
+[data-content-type="bulletListItem"] p:before {
+    content: "•";
+    margin-right: 15px;
+}
+
+[data-content-type="bulletListItem"] ~ [data-node-type="blockGroup"] {
+    padding-left: 20px;
+}
+
+[data-content-type="bulletListItem"] ~ [data-node-type="blockGroup"] p:before {
+    content: "◦";
+}

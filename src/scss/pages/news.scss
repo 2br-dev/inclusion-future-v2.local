@@ -1,0 +1,52 @@
+.container {
+	& .bn-block-content:not([data-content-type="bulletListItem"]) {
+		margin-top: 40px;
+	}
+}
+
+img {
+	border-radius: 6px;
+	max-width: 100%;
+}
+
+main {
+	ul {
+		&:not(.browser-default) {
+			padding-left: 0;
+			list-style-type: disc;
+
+			& > li {
+				list-style-type: disc;
+				list-style-position: inside;
+			}
+
+			& ul {
+				list-style-type: circle;
+
+				& li {
+					list-style-type: circle;
+					padding-left: 40px;
+				}
+			}
+		}
+	}
+}
+
+[data-content-type="bulletListItem"] {
+	& p {
+		margin: 0;
+
+		&:before {
+			content: "•";
+			margin-right: 15px;
+		}
+	}
+
+	& ~ [data-node-type="blockGroup"] {
+		padding-left: 20px;
+
+		& p:before {
+			content: "◦";
+		}
+	}
+}

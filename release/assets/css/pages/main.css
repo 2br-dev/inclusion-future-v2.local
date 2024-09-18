@@ -1,7 +1,3 @@
-body section {
-    padding: 4vmax 0;
-}
-
 body section#hero img.logo {
     width: clamp(140px, 25vw, 300px);
     margin-bottom: 3vmax;
@@ -34,7 +30,7 @@ body section#purposes .col {
 
 body section#news {
     background-color: #ffede5;
-    max-width: 100%;
+    max-width: 100vw;
     overflow: hidden;
 }
 
@@ -60,42 +56,6 @@ body section#news .news-header {
 
 body section#news h2 {
     margin: 0;
-}
-
-body section#news .news-content {
-    position: relative;
-}
-
-body section#news .news-content .swiper {
-    padding: 40px 18px;
-    box-sizing: border-box;
-    width: calc(100% + 36px);
-    margin-left: -18px;
-}
-
-body section#news .news-content .prev, body section#news .news-content .next {
-    position: absolute;
-    width: 60px;
-    aspect-ratio: 1 / 1;
-    text-align: center;
-    line-height: 60px;
-    font-size: 24px;
-    top: 50%;
-    z-index: 10;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border-radius: 50%;
-}
-
-@media (max-width: 850px) {
-    body section#news .news-content .prev, body section#news .news-content .next {
-        display: none;
-    }
-}
-
-body section#news .news-content .next {
-    right: 0;
-    transform: translate(50%, -50%);
 }
 
 body section#partners .swiper-slide {

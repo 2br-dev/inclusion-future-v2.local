@@ -1,523 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<link rel="stylesheet" href="/assets/css/master.css" />
-		<link rel="stylesheet" href="/assets/css/pages/main.css" />
+		@@include('./parts/head.html', {style: "main"})
 	</head>
 	<body>
 		@@include('./parts/header.html')
-		<section id="hero">
-			<div class="container">
-				<div class="row flex vcenter">
-					<div class="col xl6 l6 m7 s12">
-						<div class="hero-content">
-							<h1>Точно ли вы понимаете, что такое инклюзия?</h1>
+		<main>
+			<section id="hero">
+				<div class="container">
+					<div class="row flex vcenter">
+						<div class="col xl6 l6 m7 s12">
+							<div class="hero-content">
+								<h1>
+									Точно ли вы понимаете, что такое инклюзия?
+								</h1>
+								<p>
+									Это не очередное модное слово, а принцип,
+									направленный на создание среды, где каждый
+									чувствует себя частью общества, независимо
+									от своих индивидуальных особенностей,
+									потребностей или различий.
+								</p>
+							</div>
+						</div>
+						<div
+							class="col xl6 l6 m5 s6 offset-s3 xs8 offset-xs2 t12"
+						>
+							<img
+								src="/assets/img/hero.jpg"
+								alt=""
+								class="responsive-img"
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="inclusion-future">
+				<div class="container">
+					<div class="row flex vcenter">
+						<div class="col l5 m6 s12">
+							<h2>Будущее инклюзии</h2>
 							<p>
-								Это не очередное модное слово, а принцип,
-								направленный на создание среды, где каждый
-								чувствует себя частью общества, независимо от
-								своих индивидуальных особенностей, потребностей
-								или различий.
+								Проект «Будущее инклюзии» поможет выстроить
+								диалог между сторонами-участниками формирования
+								инклюзивной экосистемы, повысит уровень
+								информированности доноров, НКО и граждан,
+								стимулирует развитие инклюзивной культуры в
+								обществе.
 							</p>
 						</div>
-					</div>
-					<div class="col xl6 l6 m5 s6 offset-s3 xs8 offset-xs2 t12">
-						<img
-							src="/assets/img/hero.jpg"
-							alt=""
-							class="responsive-img"
-						/>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section id="inclusion-future">
-			<div class="container">
-				<div class="row flex vcenter">
-					<div class="col l5 m6 s12">
-						<h2>Будущее инклюзии</h2>
-						<p>
-							Проект «Будущее инклюзии» поможет выстроить диалог
-							между сторонами-участниками формирования инклюзивной
-							экосистемы, повысит уровень информированности
-							доноров, НКО и граждан, стимулирует развитие
-							инклюзивной культуры в обществе.
-						</p>
-					</div>
-					<div class="col l6 offset-l1 m6 s12">
-						<img
-							src="/assets/img/photos.png"
-							alt=""
-							class="responsive-img"
-						/>
+						<div class="col l6 offset-l1 m6 s12">
+							<img
+								src="/assets/img/photos.png"
+								alt=""
+								class="responsive-img"
+							/>
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<section id="purposes">
-			<div class="container">
-				<div class="row">
-					<div class="col l8 offset-l2 m10 offset-m1 s12">
-						<div class="row">
-							<div class="col center-align">
-								<h2>Наши цели</h2>
-							</div>
-							<div class="col m4 s12 center-align margin-bottom">
-								<img
-									src="/assets/img/information.svg"
-									alt=""
-									class="lazy"
-								/>
-								<h3>Информирование</h3>
-								<p>
-									Повышение качества жизни уязвимых,
-									исключённых групп населения
-								</p>
-							</div>
-							<div class="col m4 s12 center-align margin-bottom">
-								<img
-									src="/assets/img/development.svg"
-									alt=""
-									class="lazy"
-								/>
-								<h3>Развитие</h3>
-								<p>
-									Развитие и качественный рост донорских
-									программ и проектов инклюзивной тематики
-								</p>
-							</div>
-							<div class="col m4 s12 center-align margin-bottom">
-								<img
-									src="/assets/img/communication.svg"
-									alt=""
-									class="lazy"
-								/>
-								<h3>Коммуникации</h3>
-								<p>
-									Стимулирование Рост культуры DEI* фондов и
-									компаний
-								</p>
+			</section>
+			<section id="purposes">
+				<div class="container">
+					<div class="row">
+						<div class="col xl8 offset-xl2 l10 offset-l1 m12">
+							<div class="row">
+								<div class="col center-align">
+									<h2>Наши цели</h2>
+								</div>
+								<div
+									class="col m4 s12 center-align margin-bottom"
+								>
+									<img
+										src="/assets/img/information.svg"
+										alt=""
+										class="lazy"
+									/>
+									<h3 class="pseudo-h4">Информирование</h3>
+									<p>
+										Повышение качества жизни уязвимых,
+										исключённых групп населения
+									</p>
+								</div>
+								<div
+									class="col m4 s12 center-align margin-bottom"
+								>
+									<img
+										src="/assets/img/development.svg"
+										alt=""
+										class="lazy"
+									/>
+									<h3 class="pseudo-h4">Развитие</h3>
+									<p>
+										Развитие и качественный рост донорских
+										программ и проектов инклюзивной тематики
+									</p>
+								</div>
+								<div
+									class="col m4 s12 center-align margin-bottom"
+								>
+									<img
+										src="/assets/img/communication.svg"
+										alt=""
+										class="lazy"
+									/>
+									<h3 class="pseudo-h4">Коммуникации</h3>
+									<p>
+										Стимулирование Рост культуры DEI* фондов
+										и компаний
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<section id="news">
-			<div class="container">
-				<div class="news-header">
-					<h2>Новости проекта</h2>
-					<a href="" class="bttn waves-effect waves-dark"
-						>Смотреть все</a
-					>
-				</div>
-				<div class="news-content">
-					<div class="swiper" id="main-news">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy waves-effect"
-										data-bg="/assets/img/news/1.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/2.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/3.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/4.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/5.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/6.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/7.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/8.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/9.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/10.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/11.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="news-card z-depth-1 hoverable">
-									<a
-										href=""
-										class="news-card-image lazy"
-										data-bg="/assets/img/news/12.jpg"
-									>
-										<div class="label">
-											<i class="bx bxs-zap"></i>new
-										</div>
-									</a>
-									<div class="news-card-title">
-										Конкурс рисунка среди людей с
-										дисфункцией опорно-двигательного
-										аппарата
-									</div>
-									<div class="news-card-footer">
-										<div class="news-card-tags">
-											<a href="" class="tag"
-												>Презентация</a
-											>
-										</div>
-										<div class="news-card-date">
-											3 дня назад
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+			</section>
+			<section id="news">
+				<div class="container">
+					<div class="news-header">
+						<h2>Новости проекта</h2>
+						<a href="" class="bttn waves-effect waves-dark"
+							>Смотреть все</a
+						>
 					</div>
-					<a href="" class="prev bx bx-left-arrow-alt"></a>
-					<a href="" class="next bx bx-right-arrow-alt"></a>
+					@@include('./parts/news-slider.html')
+					<div
+						id="main-news-pagination"
+						class="swiper-pagination"
+					></div>
 				</div>
-				<div id="main-news-pagination" class="swiper-pagination"></div>
-			</div>
-		</section>
-		<section id="partners">
-			<div class="container">
-				<div class="row">
-					<div class="col center-align"><h2>Наши партнёры</h2></div>
-					<div class="col">
-						<div class="swiper" id="main-partners">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<a href=""
-										><img
-											class="lazy responsive-img"
-											data-src="/assets/img/partners/forum-donorov.svg"
-											alt=""
-									/></a>
-								</div>
-								<div class="swiper-slide">
-									<a href=""
-										><img
-											class="lazy responsive-img"
-											data-src="/assets/img/partners/fpg.svg"
-											alt=""
-									/></a>
-								</div>
-								<div class="swiper-slide">
-									<a href=""
-										><img
-											class="lazy responsive-img"
-											data-src="/assets/img/partners/mobius.svg"
-											alt=""
-									/></a>
-								</div>
-								<div class="swiper-slide">
-									<a href=""
-										><img
-											class="lazy responsive-img"
-											data-src="/assets/img/partners/museum.svg"
-											alt=""
-									/></a>
-								</div>
-								<div class="swiper-slide">
-									<a href=""
-										><img
-											class="lazy responsive-img"
-											data-src="/assets/img/partners/2br.svg"
-											alt=""
-									/></a>
-								</div>
-							</div>
-							<div
-								id="main-partners-pagination"
-								class="swiper-pagination"
-							></div>
+			</section>
+			@@include('./parts/partners.html')
+			<section id="buttons">
+				<div class="container">
+					<div class="row">
+						<div class="col m6 s12">
+							<a
+								href=""
+								class="banner-button hoverable"
+								id="importance"
+							>
+								<span class="text">
+									<div class="header">
+										<p class="title">Нам важен каждый</p>
+										<p>
+											Присоединяйтесь к проекту, чтобы
+											внести личный вклад в создание
+											инклюзивного общества в России
+										</p>
+									</div>
+									<div class="bttn-wrapper">
+										<span class="bttn">Присоединиться</span>
+									</div>
+								</span>
+								<div class="image">
+									<img
+										src="/assets/img/importance.png"
+										alt=""
+										class="lazy"
+									/></div
+							></a>
+						</div>
+						<div class="col m6 s12">
+							<a
+								href=""
+								class="banner-button hoverable"
+								id="identics"
+							>
+								<span class="text">
+									<div class="header">
+										<p class="title">Айдентика проекта</p>
+									</div>
+									<div class="bttn-wrapper">
+										<span class="bttn">Смотреть</span>
+									</div>
+								</span>
+								<div class="image">
+									<img
+										src="/assets/img/identics.jpg"
+										alt=""
+										class="lazy"
+									/></div
+							></a>
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</main>
 		@@include('./parts/footer.html')
 	</body>
 	<script src="/assets/js/master.js"></script>

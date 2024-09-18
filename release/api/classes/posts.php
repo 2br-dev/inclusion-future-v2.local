@@ -4,6 +4,7 @@ class Posts{
 
 	// Экземпляр MODx
 	private $modx;
+	private $parent;
 
 	// Инициализация экземпляра класса
 	public function __construct() {
@@ -16,8 +17,14 @@ class Posts{
 	}
 
 	// Список ресурсов 
-	public function get($parent){
-		$resources = $this->modx->getCollection('modResource', array('parent' => (int)$parent, 'deletedon' => 0));
+	public function get(){
+		
+		// Поиск документа с новостями
+		$news = $this->modx->getObject('modResource', array('alias' => 'all-news'));
+		$newsId = $news->get('id');
+		$this->parent = $newsId;
+
+		$resources = $this->modx->getCollection('modResource', array('parent' => $newsId, 'deletedon' => 0));
 		$output = [];
 		forEach($resources as $doc){
 			$output[] = [

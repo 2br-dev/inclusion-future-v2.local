@@ -27,7 +27,6 @@ function App() {
 		introtext: string;
 		cover: string;
 		content: string | null;
-		imagelist: Array<string>;
 		selected: boolean;
 		loading: boolean;
 		hasChanges: boolean;
@@ -41,7 +40,6 @@ function App() {
 		content: "",
 		selected: false,
 		loading: false,
-		imagelist: new Array<string>(),
 		hasChanges: false,
 	};
 
@@ -69,8 +67,6 @@ function App() {
 			"tmpfiles.org/dl/"
 		);
 
-		document.imagelist.push(url);
-
 		return url;
 	};
 
@@ -92,7 +88,7 @@ function App() {
 		(preselect: boolean = false) => {
 			setListLoading(true);
 			const selectedDoc = localStorage.getItem("selectedDoc");
-			fetch(`${apiURL}list.php?parent=2`)
+			fetch(`${apiURL}list.php`)
 				.then((res) => res.json())
 				.then((listResponse) => {
 					if (!listResponse.list.length) {
@@ -128,7 +124,6 @@ function App() {
 													responseDoc.introtext,
 												cover: responseDoc.cover,
 												content: responseDoc.content,
-												imagelist: [],
 												selected: true,
 												loading: false,
 												hasChanges: false,
@@ -144,6 +139,10 @@ function App() {
 												setDocs(listItems);
 											}
 										});
+								})
+								.catch((error) => {
+									item.loading = false;
+									console.error(error);
 								});
 						} else {
 							item.loading = false;
@@ -194,11 +193,17 @@ function App() {
 	};
 
 	const savePost = async () => {
-		await editor.blocksToHTMLLossy(editor.document).then((content) => {
+		await editor.blocksToFullHTML(editor.document).then((content) => {
 			const url = `${apiURL}save.php`;
 			const doc = { ...document };
 			doc.content = content;
 			const data = JSON.stringify(doc);
+
+			const _docs = [...docs];
+			const _doc = _docs.find((d) => d.id === doc.id);
+			if (_doc) {
+				doc.loading = true;
+			}
 
 			fetch(url, {
 				method: "POST",
@@ -220,6 +225,7 @@ function App() {
 						const _doc = _docs.find((d) => d.id === doc.id);
 						if (_doc) {
 							_doc.hasChanges = false;
+							_doc.loading = false;
 						}
 						setDocs(_docs);
 					}
@@ -323,7 +329,7 @@ function App() {
 		const id = parseInt(e.currentTarget.dataset.id || "");
 
 		if (document.id === null) {
-			editor.blocksToHTMLLossy().then((value) => {
+			editor.blocksToFullHTML(editor.document).then((value) => {
 				document.content = value;
 			});
 		}
@@ -363,7 +369,6 @@ function App() {
 								selected: false,
 								hasChanges: false,
 								cover: "",
-								imagelist: [],
 							});
 							docs.forEach((d) => (d.loading = false));
 							setDocs([...docs]);
@@ -402,7 +407,6 @@ function App() {
 			introtext: defaultDocument.introtext,
 			content: "",
 			cover: "",
-			imagelist: [],
 			loading: false,
 			selected: true,
 			hasChanges: false,

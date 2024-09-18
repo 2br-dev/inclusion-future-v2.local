@@ -3,6 +3,16 @@ footer {
 	padding: 4vmax 0;
 	color: #fff;
 
+	& ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	& i {
+		margin-right: 6px;
+	}
+
 	& a {
 		color: #fff;
 	}

@@ -2,26 +2,72 @@
   'config' => 
   array (
   ),
+  'aliasMap' => 
+  array (
+    '.html' => 18,
+    'index.html' => 1,
+    'about/' => 2,
+    'news/' => 10,
+    'all-news/' => 3,
+    'media/' => 4,
+    'library.html' => 5,
+    'редактор-постов.html' => 17,
+    'concilium.html' => 13,
+    'identics.html' => 14,
+    'в-россии-могут-создать-альтернативу-паралимпийским-играм.html' => 7,
+    'вадим-зеленский-«в-инклюзии-еще-не-известно,-кто-кому-помогает».html' => 8,
+    'опыт-московских-музеев-в-выскуни.html' => 9,
+    'высотные-работы-на-высоте-с-чем-работают-промышленные-альпинисты.html' => 6,
+    'цифровая-грамотность-для-людей-с-синдромом-дауна.html' => 19,
+    'video.html' => 15,
+    'audio.html' => 16,
+    'news-announces.html' => 11,
+    'news-all.html' => 12,
+  ),
   'resourceMap' => 
   array (
     0 => 
     array (
-      0 => 1,
-      1 => 2,
-      2 => 3,
-      3 => 4,
+      0 => 18,
+      1 => 1,
+      2 => 2,
+      3 => 10,
+      4 => 3,
+      5 => 4,
+      6 => 5,
+      7 => 17,
     ),
     2 => 
     array (
-      0 => 5,
-      1 => 21,
-      2 => 22,
-      3 => 23,
-      4 => 24,
+      0 => 13,
+      1 => 14,
+    ),
+    3 => 
+    array (
+      0 => 7,
+      1 => 8,
+      2 => 9,
+      3 => 6,
+      4 => 19,
+    ),
+    4 => 
+    array (
+      0 => 15,
+      1 => 16,
+    ),
+    10 => 
+    array (
+      0 => 11,
+      1 => 12,
     ),
   ),
   'webLinkMap' => 
   array (
+    10 => '3',
+    11 => '/all-news?tag=announces',
+    12 => '/all-news',
+    13 => 'about#concilium',
+    14 => 'about#identics',
   ),
   'eventMap' => 
   array (
@@ -31,6 +77,7 @@
     ),
     'OnDocFormPrerender' => 
     array (
+      3 => '3',
       1 => '1',
     ),
     'OnFileCreateFormPrerender' => 
@@ -41,13 +88,30 @@
     array (
       1 => '1',
     ),
+    'OnFileManagerUpload' => 
+    array (
+      5 => '5',
+    ),
     'OnPluginFormPrerender' => 
     array (
       1 => '1',
     ),
+    'OnRichTextBrowserInit' => 
+    array (
+      6 => '6',
+    ),
+    'OnRichTextEditorInit' => 
+    array (
+      6 => '6',
+    ),
     'OnRichTextEditorRegister' => 
     array (
       1 => '1',
+      6 => '6',
+    ),
+    'OnSiteRefresh' => 
+    array (
+      2 => '2',
     ),
     'OnSnipFormPrerender' => 
     array (
@@ -57,9 +121,18 @@
     array (
       1 => '1',
     ),
+    'OnTVInputPropertiesList' => 
+    array (
+      3 => '3',
+    ),
     'OnTVInputRenderList' => 
     array (
       1 => '1',
+      3 => '3',
+    ),
+    'OnWebPagePrerender' => 
+    array (
+      2 => '2',
     ),
   ),
   'pluginCache' => 
@@ -221,6 +294,281 @@ if ($script) {
       'moduleguid' => '',
       'static' => '0',
       'static_file' => 'ace/elements/plugins/ace.plugin.php',
+    ),
+    2 => 
+    array (
+      'id' => '2',
+      'source' => '1',
+      'property_preprocess' => '0',
+      'name' => 'pdoTools',
+      'description' => '',
+      'editor_type' => '0',
+      'category' => '1',
+      'cache_type' => '0',
+      'plugincode' => '/** @var \\MODX\\Revolution\\modX $modx */
+
+switch ($modx->event->name) {
+    case \'OnSiteRefresh\':
+        /** @var ModxPro\\PdoTools\\CoreTools $coreTools */
+        if ($coreTools = $modx->services->get(\'pdotools\')) {
+            if ($coreTools->clearFileCache()) {
+                $modx->log(modX::LOG_LEVEL_INFO, $modx->lexicon(\'refresh_default\') . \': pdoTools\');
+            }
+        }
+        break;
+    case \'OnWebPagePrerender\':
+        /** @var ModxPro\\PdoTools\\Parsing\\Parser $parser */
+        $parser = $modx->getParser();
+        if ($parser instanceof ModxPro\\PdoTools\\Parsing\\Parser) {
+            foreach ($parser->ignores as $key => $val) {
+                $modx->resource->_output = str_replace($key, $val, $modx->resource->_output);
+            }
+        }
+        break;
+}',
+      'locked' => '0',
+      'properties' => NULL,
+      'disabled' => '0',
+      'moduleguid' => '',
+      'static' => '0',
+      'static_file' => 'core/components/pdotools/elements/plugins/plugin.pdotools.php',
+    ),
+    3 => 
+    array (
+      'id' => '3',
+      'source' => '0',
+      'property_preprocess' => '0',
+      'name' => 'MIGX',
+      'description' => '',
+      'editor_type' => '0',
+      'category' => '2',
+      'cache_type' => '0',
+      'plugincode' => '$corePath = $modx->getOption(\'migx.core_path\',null,$modx->getOption(\'core_path\').\'components/migx/\');
+$assetsUrl = $modx->getOption(\'migx.assets_url\', null, $modx->getOption(\'assets_url\') . \'components/migx/\');
+switch ($modx->event->name) {
+    case \'OnTVInputRenderList\':
+        $modx->event->output($corePath.\'elements/tv/input/\');
+        break;
+    case \'OnTVInputPropertiesList\':
+        $modx->event->output($corePath.\'elements/tv/inputoptions/\');
+        break;
+
+        case \'OnDocFormPrerender\':
+        $modx->controller->addCss($assetsUrl.\'css/mgr.css\');
+        break; 
+ 
+    /*          
+    case \'OnTVOutputRenderList\':
+        $modx->event->output($corePath.\'elements/tv/output/\');
+        break;
+    case \'OnTVOutputRenderPropertiesList\':
+        $modx->event->output($corePath.\'elements/tv/properties/\');
+        break;
+    
+    case \'OnDocFormPrerender\':
+        $assetsUrl = $modx->getOption(\'colorpicker.assets_url\',null,$modx->getOption(\'assets_url\').\'components/colorpicker/\'); 
+        $modx->regClientStartupHTMLBlock(\'<script type="text/javascript">
+        Ext.onReady(function() {
+            
+        });
+        </script>\');
+        $modx->regClientStartupScript($assetsUrl.\'sources/ColorPicker.js\');
+        $modx->regClientStartupScript($assetsUrl.\'sources/ColorMenu.js\');
+        $modx->regClientStartupScript($assetsUrl.\'sources/ColorPickerField.js\');		
+        $modx->regClientCSS($assetsUrl.\'resources/css/colorpicker.css\');
+        break;
+     */
+}
+return;',
+      'locked' => '0',
+      'properties' => 'a:0:{}',
+      'disabled' => '0',
+      'moduleguid' => '',
+      'static' => '0',
+      'static_file' => '',
+    ),
+    5 => 
+    array (
+      'id' => '5',
+      'source' => '0',
+      'property_preprocess' => '0',
+      'name' => 'migxResizeOnUpload',
+      'description' => '',
+      'editor_type' => '0',
+      'category' => '2',
+      'cache_type' => '0',
+      'plugincode' => '/**
+ * migxResizeOnUpload Plugin
+ *
+ * Events: OnFileManagerUpload
+ * Author: Bruno Perner <b.perner@gmx.de>
+ * Modified to read multiple configs from mediasource-property
+ * 
+ * First Author: Vasiliy Naumkin <bezumkin@yandex.ru>
+ * Required: PhpThumbOf snippet for resizing images
+ * 
+ * Example: mediasource - property \'resizeConfig\':
+ * [{"alias":"origin","w":"500","h":"500","far":1},{"alias":"thumb","w":"150","h":"150","far":1}]
+ */
+
+if ($modx->event->name != \'OnFileManagerUpload\') {
+    return;
+}
+
+
+$file = $modx->event->params[\'files\'][\'file\'];
+$directory = $modx->event->params[\'directory\'];
+
+if ($file[\'error\'] != 0) {
+    return;
+}
+
+$name = $file[\'name\'];
+//$extensions = explode(\',\', $modx->getOption(\'upload_images\'));
+
+$source = $modx->event->params[\'source\'];
+
+if ($source instanceof modMediaSource) {
+    //$dirTree = $modx->getOption(\'dirtree\', $_REQUEST, \'\');
+    //$modx->setPlaceholder(\'docid\', $resource_id);
+    $source->initialize();
+    $basePath = str_replace(\'/./\', \'/\', $source->getBasePath());
+    //$cachepath = $cachepath . $dirTree;
+    $baseUrl = $modx->getOption(\'site_url\') . $source->getBaseUrl();
+    //$baseUrl = $baseUrl . $dirTree;
+    $sourceProperties = $source->getPropertyList();
+
+    //echo \'<pre>\' . print_r($sourceProperties, 1) . \'</pre>\';
+    //$allowedExtensions = $modx->getOption(\'allowedFileTypes\', $sourceProperties, \'\');
+    //$allowedExtensions = empty($allowedExtensions) ? \'jpg,jpeg,png,gif\' : $allowedExtensions;
+    //$maxFilesizeMb = $modx->getOption(\'maxFilesizeMb\', $sourceProperties, \'8\');
+    //$maxFiles = $modx->getOption(\'maxFiles\', $sourceProperties, \'0\');
+    //$thumbX = $modx->getOption(\'thumbX\', $sourceProperties, \'100\');
+    //$thumbY = $modx->getOption(\'thumbY\', $sourceProperties, \'100\');
+    $resizeConfigs = $modx->getOption(\'resizeConfigs\', $sourceProperties, \'\');
+    $resizeConfigs = $modx->fromJson($resizeConfigs);
+    $thumbscontainer = $modx->getOption(\'thumbscontainer\', $sourceProperties, \'thumbs/\');
+    $imageExtensions = $modx->getOption(\'imageExtensions\', $sourceProperties, \'jpg,jpeg,png,gif,JPG\');
+    $imageExtensions = explode(\',\', $imageExtensions);
+    //$uniqueFilenames = $modx->getOption(\'uniqueFilenames\', $sourceProperties, false);
+    //$onImageUpload = $modx->getOption(\'onImageUpload\', $sourceProperties, \'\');
+    //$onImageRemove = $modx->getOption(\'onImageRemove\', $sourceProperties, \'\');
+    $cleanalias = $modx->getOption(\'cleanFilename\', $sourceProperties, false);
+
+}
+
+if (is_array($resizeConfigs) && count($resizeConfigs) > 0) {
+    foreach ($resizeConfigs as $rc) {
+        if (isset($rc[\'alias\'])) {
+            $filePath = $basePath . $directory;
+            $filePath = str_replace(\'//\',\'/\',$filePath);
+            if ($rc[\'alias\'] == \'origin\') {
+                $thumbPath = $filePath;
+            } else {
+                $thumbPath = $filePath . $rc[\'alias\'] . \'/\';
+                $permissions = octdec(\'0\' . (int)($modx->getOption(\'new_folder_permissions\', null, \'755\', true)));
+                if (!@mkdir($thumbPath, $permissions, true)) {
+                    $modx->log(MODX_LOG_LEVEL_ERROR, sprintf(\'[migxResourceMediaPath]: could not create directory %s).\', $thumbPath));
+                } else {
+                    chmod($thumbPath, $permissions);
+                }
+
+            }
+
+
+            $filename = $filePath . $name;
+            $thumbname = $thumbPath . $name;
+            $ext = substr(strrchr($name, \'.\'), 1);
+            if (in_array($ext, $imageExtensions)) {
+                $sizes = getimagesize($filename);
+                echo $sizes[0]; 
+                //$format = substr($sizes[\'mime\'], 6);
+                if ($sizes[0] > $rc[\'w\'] || $sizes[1] > $rc[\'h\']) {
+                    if ($sizes[0] < $rc[\'w\']) {
+                        $rc[\'w\'] = $sizes[0];
+                    }
+                    if ($sizes[1] < $rc[\'h\']) {
+                        $rc[\'h\'] = $sizes[1];
+                    }
+                    $type = $sizes[0] > $sizes[1] ? \'landscape\' : \'portrait\';
+                    if (isset($rc[\'far\']) && $rc[\'far\'] == \'1\' && isset($rc[\'w\']) && isset($rc[\'h\'])) {
+                        if ($type = \'landscape\') {
+                            unset($rc[\'h\']);
+                        }else {
+                            unset($rc[\'w\']);
+                        }
+                    }
+
+                    $options = \'\';
+                    foreach ($rc as $k => $v) {
+                        if ($k != \'alias\') {
+                            $options .= \'&\' . $k . \'=\' . $v;
+                        }
+                    }
+                    $resized = $modx->runSnippet(\'phpthumbof\', array(\'input\' => $filePath . $name, \'options\' => $options));
+                    rename(MODX_BASE_PATH . substr($resized, 1), $thumbname);
+                }
+            }
+
+
+        }
+    }
+}',
+      'locked' => '0',
+      'properties' => 'a:0:{}',
+      'disabled' => '0',
+      'moduleguid' => '',
+      'static' => '0',
+      'static_file' => '',
+    ),
+    6 => 
+    array (
+      'id' => '6',
+      'source' => '0',
+      'property_preprocess' => '0',
+      'name' => 'TinyMCE Rich Text Editor',
+      'description' => 'TinyMCE Rich Text Editor runtime hooks - registers and includes javascripts on document edit pages',
+      'editor_type' => '0',
+      'category' => '3',
+      'cache_type' => '0',
+      'plugincode' => '/**
+ * TinyMCE Rich Tech Editor Plugin
+ *
+ * @package tinymcerte
+ * @subpackage plugin
+ *
+ * @var modX $modx
+ * @var array $scriptProperties
+ */
+
+$className = \'TinyMCERTE\\Plugins\\Events\\\\\' . $modx->event->name;
+
+$corePath = $modx->getOption(\'tinymcerte.core_path\', null, $modx->getOption(\'core_path\') . \'components/tinymcerte/\');
+/** @var TinyMCERTE $tinymcerte */
+$tinymcerte = $modx->getService(\'tinymcerte\', \'TinyMCERTE\', $corePath . \'model/tinymcerte/\', [
+    \'core_path\' => $corePath
+]);
+
+if ($tinymcerte) {
+    if (class_exists($className)) {
+        $handler = new $className($modx, $scriptProperties);
+        if (get_class($handler) == $className) {
+            $handler->run();
+        } else {
+            $modx->log(xPDO::LOG_LEVEL_ERROR, $className. \' could not be initialized!\', \'\', \'TinyMCE RTE Plugin\');
+        }
+    } else {
+        $modx->log(xPDO::LOG_LEVEL_ERROR, $className. \' was not found!\', \'\', \'TinyMCE RTE Plugin\');
+    }
+}
+
+return;',
+      'locked' => '0',
+      'properties' => 'a:0:{}',
+      'disabled' => '0',
+      'moduleguid' => '',
+      'static' => '0',
+      'static_file' => '',
     ),
   ),
   'policies' => 
